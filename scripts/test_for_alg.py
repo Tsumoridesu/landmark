@@ -12,7 +12,6 @@ import math
 from geometry_msgs.msg import PoseArray
 
 
-# from numba import jit, cuda
 
 
 class landmark_location:
@@ -25,11 +24,6 @@ class landmark_location:
         rospy.Subscriber("/particlecloud", PoseArray, self.cb_particle)
 
     def cb_particle(self, data):
-        # for i in data.poses:
-        # (r, p, y) = transformations.euler_from_quaternion(
-        #     [i.orientation.x, i.orientation.y, i.orientation.z, i.orientation.w])
-        #     print(y)
-        # print("end")
         for i in self.boundingboxes:
             if i.Class == "Vending machine":
                 print(i.yaw)
@@ -46,13 +40,8 @@ class landmark_location:
                     theta = phi - i.yaw
                     weight = (math.cos(theta) + 1) * i.probability
                     print(theta, weight)
-        # print(self.boundingboxes)
     def cb_image(self, data):
-        # for i in data.bounding_boxes:
-        #     # cent = (i.xmin + i.xmax) / 2
-        #     # yaw_vision = -(cent - 640) / 640 * math.pi
-        #     print(i.Class, i.probability, i.yaw)
-        # print("end")
+
         self.boundingboxes = data.bounding_boxes
 
 
@@ -61,33 +50,3 @@ if __name__ == '__main__':
     rospy.init_node('test')
     landmark_location()
     rospy.spin()
-#
-# if __name__ == '__main__':
-#     tests()
-
-# def linstener():
-#     rospy.Subscriber("/particlecloud", PoseArray, cb)
-#
-#
-# def cb(data):
-#     for i in data.poses:
-#         yaw = math.atan2(2 * (i.orientation.w * i.orientation.z + i.orientation.x * i.orientation.y),
-#                          1 - 2 * (i.orientation.y * i.orientation.y + i.orientation.z * i.orientation.z))
-#
-#         print(yaw)
-#     print("end")
-#
-#
-# if __name__ == '__main__':
-#     rospy.init_node('test')
-#     linstener()
-#     rospy.spin()
-
-# l1 = [0, -30]
-# o = [0, 0]
-# iny = [-(l1[0] - o[0]), (l1[1] - o[1])]
-#
-# p = math.atan2(iny[0], iny[1])*180/math.pi
-#
-# print(p)
-#
