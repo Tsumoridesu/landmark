@@ -44,7 +44,7 @@ source ~/catkin_ws/devel/setup.bash
 mkdir -p cv_bridge_ws/src
 cd cv_bridge_ws
 
-# be careful to your python version
+# be careful to your python3 version
 catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython36m.so
 carkin config --install
 
