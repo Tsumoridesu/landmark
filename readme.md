@@ -17,19 +17,20 @@ https://github.com/open-rdc/orne_navigation
 
 for ubuntu 20.04
 
-yolov5_pytorch_ros
+### yolov5_pytorch_ros
 ```
 git clone https://github.com/Tsumoridesu/yolov5_pytorch_ros.git
 ```
-landmark
+### landmark
 ```
 git clone https://github.com/Tsumoridesu/landmark.git
 ```
-theta_simple_stitching
+### theta_simple_stitching
 ```
 git clone https://github.com/open-rdc/theta_simple_stitching.git
 ```
-build
+
+### build
 ```
 catkin build yolov5_pytorch_ros landmark theta_simple_stitching
 # adds package to your path
@@ -39,7 +40,7 @@ source ~/catkin_ws/devel/setup.bash
 ## Usage
 
 ```commandline  
-# run yoour mcl first
+# run your mcl first
 
 # run theta_simple_stitching
 sudo chmod 666 /dev/bus/sub/001/*
