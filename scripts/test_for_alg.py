@@ -4,9 +4,6 @@ from tf import transformations
 import yaml
 import rospy
 from yolov5_pytorch_ros.msg import BoundingBoxes
-# import sys
-# import time
-# import os
 import numpy as np
 import math
 from geometry_msgs.msg import PoseArray

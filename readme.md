@@ -15,7 +15,7 @@ https://github.com/open-rdc/orne_navigation
 
 ## Installation
 
-for ubuntu 20.04
+### for ubuntu 20.04
 
 ### yolov5_pytorch_ros
 ```
@@ -36,6 +36,27 @@ catkin build yolov5_pytorch_ros landmark theta_simple_stitching
 # adds package to your path
 source ~/catkin_ws/devel/setup.bash 
 ```
+
+### extura for ubuntu 18.04
+
+```
+# ros melodic should be install cv_brdige first
+mkdir -p cv_bridge_ws/src
+cd cv_bridge_ws
+
+# be careful to your python version
+catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython36m.so
+carkin config --install
+
+
+cd cv_bridge_ws/src
+git clone https://github.com/ros-perception/vision_opencv.git
+catkin build
+
+# add cv_bridge to your path
+echo "source ~/cv_bridge_ws/devel/setup.bash" >> ~/.bashrc
+```
+
 
 ## Usage
 
