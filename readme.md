@@ -59,6 +59,13 @@ echo "source ~/cv_bridge_ws/devel/setup.bash" >> ~/.bashrc
 
 
 ## Usage
+mcl_with_landmark baseed the YOLOv5 to give the weight for your particlecloud.
+
+you should add the landmark information to ```/landmark_cfg/landmark_list.yaml``` first.
+
+the landmark pose is based on your map.
+
+
 
 ```commandline  
 # run your mcl first
