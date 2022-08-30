@@ -37,7 +37,7 @@ catkin build yolov5_pytorch_ros landmark theta_simple_stitching
 source ~/catkin_ws/devel/setup.bash 
 ```
 
-### extura for ubuntu 18.04
+### extra for ubuntu 18.04
 
 ```
 # ros melodic should be install cv_brdige first
