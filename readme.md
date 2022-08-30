@@ -65,7 +65,7 @@ roslaunch yolov5_pytorch_ros detector.launch
 ### Published topics
 * **`vision_weight`** (std_msgs::Float64MultiArray)
     
-    published to the vision_weight for the particle filter
+    published to the vision_weight for your particle filter
 
 ## TODO
 * add launch file for mcl_with_landmark
