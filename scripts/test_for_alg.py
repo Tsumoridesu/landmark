@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-# coding = utf-8
+# coding=utf-8
+import sys
+
+sys.path.append('/home/tsumori/catkin_ws/src/yolov5_pytorch_ros/src')
 from tf import transformations
 import yaml
 import rospy
 from yolov5_pytorch_ros.msg import BoundingBoxes
-import numpy as np
 import math
 from geometry_msgs.msg import PoseArray
 from std_msgs.msg import Float64MultiArray
@@ -26,10 +28,9 @@ class landmark_location:
 
         # publish topic の設定
         self.pub = rospy.Publisher("/vision_weight", Float64MultiArray, queue_size=1)
-        self.vision_weight = []
-        self.vision_weight_pub = Float64MultiArray()
 
     def cb_particle(self, data):
+        vision_weight = []
         for i in self.boundingboxes:
             # Vending machine　のみを対象とする 完成の場合は i.Class は landmark_list にあるかどうかを確認し、
             # あるので場合のみi.classをlandmark_listのkeyにする
@@ -50,11 +51,9 @@ class landmark_location:
 
                     theta = phi - i.yaw
                     weight = (math.cos(theta) + 1) * i.probability
-                    self.vision_weight.append(weight)
-            else:
-                self.vision_weight_pub = Float64MultiArray()
-        self.vision_weight_pub = Float64MultiArray(data=self.vision_weight)
-        self.pub.publish(self.vision_weight_pub)
+                    vision_weight.append(weight)
+        vision_weight_pub = Float64MultiArray(data=vision_weight)
+        self.pub.publish(vision_weight_pub)
 
     def cb_image(self, data):
         self.boundingboxes = data.bounding_boxes
